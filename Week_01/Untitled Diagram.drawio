@@ -1,1 +1,142 @@
-<mxfile host="app.diagrams.net" modified="2021-01-10T07:17:29.717Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="RJq_jNjkxzONhKiaY31J" version="14.1.9" type="github"><diagram id="8ZA4tzUF-DVVLS_30Xkp" name="Page-1">7VpNk5s4EP01OiZlJPF1BNtJDkklu1O7O3NkjMaQwsjB8hjn168EwoAkF55d449U5jJSI2TxXrf6qQGg6ar8WETr5AuNSQbgJC4BmgEILdvy+T9h2dcWx4a1YVmksRzUGh7Sn0QaJ9K6TWOy6Q1klGYsXfeNC5rnZMF6tqgo6K4/7IVm/V9dR0uiGR4WUaZb/0ljltRWD7qt/RNJl0nzy5YjH3gVNYPlk2ySKKa7jgnNAZoWlLK6tSqnJBPgNbjU9304cvWwsILk7JQb6NPXv7Lp/O8M4ucSJ+Gf6I+v7+Qsr1G2lQ8sF8v2DQIF3eYxEZNMAAp3ScrIwzpaiKs7zjm3JWyV8Z7Fm3I6UjBSHl2ndXh67jaErggr9nyIvAFiCZj0GOTL/q7F325sSQf7w42R5Hx5mLuFhTckMm9ACQ6jRPI4EO7GeznNSR8VUqbsUQIo2k+d9qzsdvayU89PYs05FRT5Gui2WJAhinW0u2gawGxsBckilr72l2ECWP7CN5ryBR4n01M4qpcv7+p679BESJmIRcWSMG2iiu/DY/93F0A36wLXotZDR+L0rdRqE12YWjxMLd+716L5kpFSchx26F5k0WaTLkxb4e3yp0WUcy7+1IlG5s/W+ZvbwPOAPxONwAVeWDUmwHOqSw7w7MoyA74HoJNxZMPngreWovW42mgewPMZ6/MbZekyF+RzOknBDSLrpVw5BPLCKo1jcXtYkE36M3quphKRvRZIVNjYIbBnYq4to5ta+5wpi2LYJwX6tpZFPYNzqbF3thzqGFhygD8FfBWCCiyIehtL5d2z5Po3xpL7O80puxt2zpTmtIkunOY8jdqJxu29xQ9UU89Ejx9o8A04Vvw0x9beNscTkA8CXzT8Y7vbnRPhWn0iLMOhzbkoEbpg//66AnMMwhkIP1Rc8JRz/8jbEyWFwGsjb9BjKsiXrikoUtex9W3i4MFdkCx3NJQMeujGUDIVXizXNrjSaIUXS9cjVRRXwjGYgrkHwgAEoQbd+GC57rBPmeLugOD5wdIz/BfCog1HISFXQMhWAPJ0gCxkQGi0mIOG5KypWy5EH2SXFiyhS5pH2by1hv2obMd8pnQtwftOGNvLWrbY8RWNnPOHqUTye7vpPnWvtUK56o1RE5RF6lpyDm7mOsUni+r/59G+gbD6HPhCK23dMuf82NLmwrs6xQZ8gIXXZXuxOTuCuS+qA/68PXHKefk666nlwHuXB6jZbmQUep6+qeNLygN4SiV1/CA8YzA1DzAcTM41g6lZplKBEd5//yrYUs4fyKCCTblmPDc3VJX5mYOrlfrwwU8eoiop8X/c6BXHS6s/pTyBJwb1d9GzNDQVdu8KQnR1CHX9/F783RxSztWR0sWzBtIF3n0r2RpjwzZmKnZa6juX8wFj0mCXP20przMw1g8Tpm8CLHssXNAJn07cl45pdqtBHVPHyrV0DDKc4riKD30Q4qogMANhWBX6QhAgjZN7UzYYKluCIS+bdoTRdkr0ywl4dKqAr/fCqzm+ScB74v2pZ3Ui4FdxfBcPC9IzOT7vtt/h1e/b2q8Z0fxf</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-01-10T08:24:15.828Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="XD4j0P6nkwJO4sEJE6u_" version="14.1.9" type="github">
+  <diagram id="8ZA4tzUF-DVVLS_30Xkp" name="Page-1">
+    <mxGraphModel dx="1291" dy="554" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="240" y="390" width="590" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-2" value="" style="endArrow=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;" parent="1" source="oYOUlCEVl24bx4hBR3QO-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="380" as="sourcePoint" />
+            <mxPoint x="240" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-3" value="" style="endArrow=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="830" y="390" as="sourcePoint" />
+            <mxPoint x="830" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-4" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="360" as="sourcePoint" />
+            <mxPoint x="830" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-5" value="初始堆内存&lt;br&gt;Xms" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+          <mxGeometry x="420" y="305" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-6" value="最大堆内存&lt;br&gt;Xmx" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+          <mxGeometry x="790" y="295" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-7" value="" style="endArrow=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="390" as="sourcePoint" />
+            <mxPoint x="460" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-8" value="0" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+          <mxGeometry x="230" y="305" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-10" value="物理内存" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+          <mxGeometry x="710" y="190" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-13" value="jvm使用" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="220" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-15" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="655" width="710" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-16" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="390" width="175" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-17" value="jvm本身" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="770" y="655" width="60" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-18" value="Metaspache" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="50" y="672.5" width="270" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="oYOUlCEVl24bx4hBR3QO-19" target="oYOUlCEVl24bx4hBR3QO-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-19" value="&lt;font style=&quot;font-size: 14px&quot;&gt;非堆&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+          <mxGeometry x="375" y="880" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="oYOUlCEVl24bx4hBR3QO-22" target="oYOUlCEVl24bx4hBR3QO-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-22" value="栈" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+          <mxGeometry x="112.5" y="320" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-24" value="线程栈Xss" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="400" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-25" value="线程栈Xss" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="430" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-27" value="....." style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="60" y="460" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-28" value="" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="275" y="510" width="350" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-29" value="老年代通过Full GC回收，会产生内存碎片。如果没有足够的连续内存（比如创建数组）时，会再次提起触发Full GC" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="445" width="160" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="oYOUlCEVl24bx4hBR3QO-30" target="oYOUlCEVl24bx4hBR3QO-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-30" value="&lt;font style=&quot;font-size: 14px&quot;&gt;年轻代&lt;/font&gt;&lt;br&gt;-XX:SurvivurRatio设置新生儿与两个s区的比例" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="425" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="oYOUlCEVl24bx4hBR3QO-32" target="oYOUlCEVl24bx4hBR3QO-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oYOUlCEVl24bx4hBR3QO-32" value="老年代" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
+          <mxGeometry x="705" y="395" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-1" value="" style="endArrow=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="275" y="510" as="sourcePoint" />
+            <mxPoint x="275" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-2" value="" style="endArrow=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="625" y="510" as="sourcePoint" />
+            <mxPoint x="625" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-3" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="275" y="480" as="sourcePoint" />
+            <mxPoint x="620" y="481" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-4" value="年轻代大小&lt;br&gt;Xmn&lt;br&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="415" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-6" value="from" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="475" y="515" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-7" value="to" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="515" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-8" value="新生儿" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="516.25" width="170" height="77.5" as="geometry" />
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="n3TJO66bJrdvw4teUTfG-9" target="oYOUlCEVl24bx4hBR3QO-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-9" value="&lt;font style=&quot;font-size: 18px&quot;&gt;堆&lt;/font&gt;&lt;br&gt;-XX:NewRatio 设置年轻代与老年代的比例" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="415" y="260" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n3TJO66bJrdvw4teUTfG-11" value="年轻代经过&lt;font style=&quot;font-size: 12px&quot;&gt;&amp;nbsp;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; font-family: &amp;#34;microsoft yahei&amp;#34; ; background-color: rgb(255 , 255 , 255)&quot;&gt;-XX:MaxTenuringThreshold 次&lt;/span&gt;&lt;span style=&quot;color: rgb(51 , 51 , 51) ; font-family: &amp;#34;microsoft yahei&amp;#34; ; background-color: rgb(255 , 255 , 255)&quot;&gt;Minor GC 后，成为老年代。不是一定这样&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="610" width="480" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
