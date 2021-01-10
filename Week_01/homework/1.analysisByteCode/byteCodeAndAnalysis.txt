@@ -1,0 +1,190 @@
+Classfile /G:/workspace/IdeaProjects/JAVA-01/Week_01/homework/1.analysisByteCode/Hello.class
+  Last modified 2021-1-10; size 791 bytes
+  MD5 checksum 650eb53efdec1ae397412c46b7df790d
+  Compiled from "Hello.java"
+public class Hello
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #13.#24        // java/lang/Object."<init>":()V
+   #2 = Fieldref           #25.#26        // java/lang/System.out:Ljava/io/PrintStream;
+   #3 = Methodref          #27.#28        // java/io/PrintStream.println:(I)V
+   #4 = Float              0.1f
+   #5 = Methodref          #27.#29        // java/io/PrintStream.println:(F)V
+   #6 = Methodref          #27.#30        // java/io/PrintStream.println:(J)V
+   #7 = Double             0.1d
+   #9 = Methodref          #27.#31        // java/io/PrintStream.println:(D)V
+  #10 = Methodref          #27.#32        // java/io/PrintStream.println:(Z)V
+  #11 = Methodref          #27.#33        // java/io/PrintStream.println:(C)V
+  #12 = Class              #34            // Hello
+  #13 = Class              #35            // java/lang/Object
+  #14 = Utf8               <init>
+  #15 = Utf8               ()V
+  #16 = Utf8               Code
+  #17 = Utf8               LineNumberTable
+  #18 = Utf8               main
+  #19 = Utf8               ([Ljava/lang/String;)V
+  #20 = Utf8               StackMapTable
+  #21 = Class              #36            // "[Ljava/lang/String;"
+  #22 = Utf8               SourceFile
+  #23 = Utf8               Hello.java
+  #24 = NameAndType        #14:#15        // "<init>":()V
+  #25 = Class              #37            // java/lang/System
+  #26 = NameAndType        #38:#39        // out:Ljava/io/PrintStream;
+  #27 = Class              #40            // java/io/PrintStream
+  #28 = NameAndType        #41:#42        // println:(I)V
+  #29 = NameAndType        #41:#43        // println:(F)V
+  #30 = NameAndType        #41:#44        // println:(J)V
+  #31 = NameAndType        #41:#45        // println:(D)V
+  #32 = NameAndType        #41:#46        // println:(Z)V
+  #33 = NameAndType        #41:#47        // println:(C)V
+  #34 = Utf8               Hello
+  #35 = Utf8               java/lang/Object
+  #36 = Utf8               [Ljava/lang/String;
+  #37 = Utf8               java/lang/System
+  #38 = Utf8               out
+  #39 = Utf8               Ljava/io/PrintStream;
+  #40 = Utf8               java/io/PrintStream
+  #41 = Utf8               println
+  #42 = Utf8               (I)V
+  #43 = Utf8               (F)V
+  #44 = Utf8               (J)V
+  #45 = Utf8               (D)V
+  #46 = Utf8               (Z)V
+  #47 = Utf8               (C)V
+{
+  public Hello();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 1: 0
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=13, args_size=1
+         0: bipush        110                 // 将byte类型的数值110 压入栈
+         2: istore_1                          // 将栈顶int型数值（byte按照int处理）存入第二个本地变量（第一个变量是main方法的args）（args，byte）
+         3: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;  
+         6: iload_1                           // 将第二步保存的int数值压入栈
+         7: invokevirtual #3                  // Method java/io/PrintStream.println:(I)V  栈定的元素弹栈，打印，返回值为void
+        10: iload_1                           // 再次将第二步保存的int数值压入栈
+        11: sipush        256                 // 将short类型的256压入栈  （未指定类型，jvm会自动使用满足数据范围的最小类型？）
+        14: iadd                              // 从栈顶弹出两个元素进行相加
+        15: i2s                               // 将int类型强转为short
+        16: istore_2                          // 将上一步强转后的结果存储到第三个变量   （args，byte，short）
+        17: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;   
+        20: iload_2                           // 加载第三个位置的变量，视为int类型
+        21: invokevirtual #3                  // Method java/io/PrintStream.println:(I)V  栈定的元素弹栈，打印，返回值为void
+        24: iload_2                           // 第三个压入栈
+        25: bipush        23                  // 将byte的23压入栈      （未指定类型，jvm会自动使用满足数据范围的最小类型？）
+        27: isub                              // 栈顶取出两个 相减  先入栈的减后入栈的  先出栈的-后出栈的   366 - 23
+        28: istore_3                          // 将计算结果存储到第四个变量的位置  （args，byte，short，int）
+        29: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        32: iload_3                           // 加载第四个int，下一步打印
+        33: invokevirtual #3                  // Method java/io/PrintStream.println:(I)V
+        36: iload_3                           // 加载第四个int 压入栈顶
+        37: i2f                               // int转float
+        38: ldc           #4                  // float 0.1f   常量池第四个变量压入栈
+        40: fadd                              // 将栈顶两float型数值相加并将结果压入栈顶
+        41: fstore        4                   // 将float存入第五个变量位置   （args，byte，short，int，float）
+        43: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        46: fload         4                   // 将第五个float加载并压入栈
+        48: invokevirtual #5                  // Method java/io/PrintStream.println:(F)V
+        51: iload_3                           // 将第四个int压入栈
+        52: bipush        15                  // 将byte 的 15 压入栈
+        54: imul                              // 从栈顶取出两个元素，相乘，并压入栈
+        55: i2l                               // int -> long
+        56: lstore        5                   // 出栈，存储到第六个位置      （args，byte，short，int，float，long）
+        58: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        61: lload         5                   // 加载并打印
+        63: invokevirtual #6                  // Method java/io/PrintStream.println:(J)V
+        66: lload         5                   
+        68: l2d
+        69: ldc2_w        #7                  // double 0.1d   常量池第七个压入栈   占两个位置
+        72: ddiv                              // 相除   栈顶第二个 / 栈顶第一个
+        73: dstore        7                   // 存储 （args，byte，short，int，float，long，double（占用了两个位置？））
+        75: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        78: dload         7
+        80: invokevirtual #9                  // Method java/io/PrintStream.println:(D)V
+        83: iconst_1
+        84: istore        9
+        86: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        89: iload         9
+        91: invokevirtual #10                 // Method java/io/PrintStream.println:(Z)V
+        94: bipush        97
+        96: istore        10
+        98: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       101: iload         10
+       103: invokevirtual #11                 // Method java/io/PrintStream.println:(C)V
+       106: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       109: iload         10
+       111: iload_3
+       112: irem                              // 将前两步压入栈的数值求%
+       113: invokevirtual #3                  // Method java/io/PrintStream.println:(I)V
+       116: dload         7                   // 加载第八个变量 double
+       118: lload         5                   // 加载第六个变量 long
+       120: l2d                               // long 转为 double
+       121: dcmpl                             // 比较数值，结果（-1,0,1）
+       122: ifle          133                 // 当栈顶int型数值小于等于0时跳转 小于0为上一步比较结果为false
+       125: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       128: dload         7                   // 压栈，输出
+       130: invokevirtual #9                  // Method java/io/PrintStream.println:(D)V
+       133: lconst_0                          // 压栈1
+       134: lstore        11                  // 弹栈，存储到第12个变量
+       136: lload         11                  // 加载第12个变量
+       138: lload         5                   // 加载第六个变量  
+       140: lcmp                              // 对应for循环中的判断条件 i1 < l 
+       141: ifge          161                 // 如果不满足了，跳转161
+       144: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       147: lload         11
+       149: invokevirtual #6                  // Method java/io/PrintStream.println:(J)V
+       152: lload         11                  // for循环中的 i++
+       154: lconst_1                          // for循环中的 i++
+       155: ladd                              // for循环中的 i++
+       156: lstore        11                  // for循环中的 i++
+       158: goto          136
+       161: return
+      LineNumberTable:
+        line 3: 0
+        line 4: 3
+        line 5: 10
+        line 6: 17
+        line 7: 24
+        line 8: 29
+        line 9: 36
+        line 10: 43
+        line 11: 51
+        line 12: 58
+        line 13: 66
+        line 14: 75
+        line 15: 83
+        line 16: 86
+        line 17: 94
+        line 18: 98
+        line 19: 106
+        line 20: 116
+        line 21: 125
+        line 23: 133
+        line 24: 144
+        line 23: 152
+        line 26: 161
+      StackMapTable: number_of_entries = 3
+        frame_type = 255 /* full_frame */
+          offset_delta = 133
+          locals = [ class "[Ljava/lang/String;", int, int, int, float, long, double, int, int ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ long ]
+        frame_type = 250 /* chop */
+          offset_delta = 24
+}
+SourceFile: "Hello.java"
