@@ -102,7 +102,7 @@ Constant pool:
         52: bipush        15                  // 将byte 的 15 压入栈
         54: imul                              // 从栈顶取出两个元素，相乘，并压入栈
         55: i2l                               // int -> long
-        56: lstore        5                   // 出栈，存储到第六个位置      （args，byte，short，int，float，long）
+        56: lstore        5                   // 出栈，存储到第六个位置(占用两个位置)      （args，byte，short，int，float，long）
         58: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
         61: lload         5                   // 加载并打印
         63: invokevirtual #6                  // Method java/io/PrintStream.println:(J)V
@@ -110,7 +110,7 @@ Constant pool:
         68: l2d
         69: ldc2_w        #7                  // double 0.1d   常量池第七个压入栈   占两个位置
         72: ddiv                              // 相除   栈顶第二个 / 栈顶第一个
-        73: dstore        7                   // 存储 （args，byte，short，int，float，long，double（占用了两个位置？））
+        73: dstore        7                   // 存储 占用两个位置（args，byte，short，int，float，long，double）
         75: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
         78: dload         7
         80: invokevirtual #9                  // Method java/io/PrintStream.println:(D)V
