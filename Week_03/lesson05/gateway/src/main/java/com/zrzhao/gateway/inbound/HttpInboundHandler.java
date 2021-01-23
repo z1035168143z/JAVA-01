@@ -1,6 +1,8 @@
 package com.zrzhao.gateway.inbound;
 
 import com.zrzhao.gateway.filter.chain.HttpRequestFilterChain;
+import com.zrzhao.gateway.filter.chain.HttpResponseFilterChain;
+import com.zrzhao.gateway.outbound.HttpOutboundHandler;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
@@ -25,6 +27,7 @@ import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
  *
  * @author zrzhao
  */
+@ChannelHandler.Sharable
 public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(HttpInboundHandler.class);
@@ -34,6 +37,8 @@ public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
     public HttpInboundHandler(HttpRequestFilterChain filterChain) {
         this.filterChain = filterChain;
     }
+
+    private static final HttpOutboundHandler HANDLER = new HttpOutboundHandler(new HttpResponseFilterChain());
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
@@ -51,8 +56,10 @@ public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
             boolean pass = filterChain.filter(fullRequest, ctx);
             if (!pass) {
                 handleFilterFailure(fullRequest, ctx);
+                return;
             }
 
+            HANDLER.handle(fullRequest, ctx);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -83,6 +90,7 @@ public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
                     ctx.write(response);
                 }
             }
+            ctx.flush();
         }
     }
 

@@ -4,8 +4,10 @@ import com.zrzhao.gateway.filter.chain.HttpRequestFilterChain;
 import com.zrzhao.gateway.filter.chain.HttpResponseFilterChain;
 import com.zrzhao.gateway.inbound.HttpInboundHandler;
 import com.zrzhao.gateway.outbound.HttpOutboundHandler;
+import com.zrzhao.gateway.registry.Registry;
 import com.zrzhao.gateway.router.HttpEndpointRouter;
 import com.zrzhao.gateway.router.RandomHttpEndpointRouter;
+import com.zrzhao.gateway.router.RouterUtils;
 import com.zrzhao.gateway.server.HttpBoundInitializer;
 import com.zrzhao.gateway.server.NettyHttpServer;
 import org.slf4j.Logger;
@@ -34,10 +36,13 @@ public class NettyServerApplication {
         // 端口
         int port = Integer.parseInt(System.getProperty("port", "8888"));
 
-        HttpRequestFilterChain httpRequestFilterChain = new HttpRequestFilterChain();
+        HttpBoundInitializer httpBoundInitializer = new HttpBoundInitializer(new HttpInboundHandler(new HttpRequestFilterChain()));
+        NettyHttpServer nettyHttpServer = new NettyHttpServer(port, httpBoundInitializer);
 
-        HttpResponseFilterChain httpResponseFilterChain = new HttpResponseFilterChain();
-        NettyHttpServer nettyHttpServer = new NettyHttpServer(port, new HttpBoundInitializer(httpRequestFilterChain, httpResponseFilterChain));
+        // 注册路由负载方法
+        RouterUtils.getInstance().register(chooseHttpEndpointRouter(System.getProperty("routerType", "random")));
+        // 注册服务
+        Registry.getInstance().register("http://127.0.0.1:8801/").register("http://127.0.0.1:8802/");
         try {
             nettyHttpServer.run();
         } catch (InterruptedException e) {
@@ -45,8 +50,14 @@ public class NettyServerApplication {
         }
     }
 
+    /**
+     * 获取负载路由
+     *
+     * @param routerType
+     * @return
+     */
     private static HttpEndpointRouter chooseHttpEndpointRouter(String routerType) {
-        return ROUTER_MAP.get(routerType);
+        return ROUTER_MAP.getOrDefault(routerType, ROUTER_MAP.get("random"));
     }
 
 }

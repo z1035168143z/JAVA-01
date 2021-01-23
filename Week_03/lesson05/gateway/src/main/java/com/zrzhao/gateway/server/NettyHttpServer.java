@@ -22,11 +22,11 @@ public class NettyHttpServer {
     /**
      * 端口号
      */
-    private int port;
+    private final int port;
     /**
      * 处理
      */
-    private ChannelHandler childHandler;
+    private final ChannelHandler childHandler;
 
     public NettyHttpServer(int port, ChannelHandler childHandler) {
         this.port = port;

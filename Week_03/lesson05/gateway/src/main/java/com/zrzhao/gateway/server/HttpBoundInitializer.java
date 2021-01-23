@@ -18,12 +18,10 @@ import io.netty.handler.codec.http.HttpServerCodec;
  */
 public class HttpBoundInitializer extends ChannelInitializer<SocketChannel> {
 
-	private final HttpRequestFilterChain httpRequestFilterChain;
-	private final HttpResponseFilterChain httpResponseFilterChain;
+	private final ChannelHandler[] channelHandlers;
 
-	public HttpBoundInitializer(HttpRequestFilterChain httpRequestFilterChain, HttpResponseFilterChain httpResponseFilterChain) {
-		this.httpRequestFilterChain = httpRequestFilterChain;
-		this.httpResponseFilterChain = httpResponseFilterChain;
+	public HttpBoundInitializer(ChannelHandler... channelHandlers) {
+		this.channelHandlers = channelHandlers;
 	}
 
 	@Override
@@ -31,7 +29,8 @@ public class HttpBoundInitializer extends ChannelInitializer<SocketChannel> {
 		ChannelPipeline p = ch.pipeline();
 		p.addLast(new HttpServerCodec());
 		p.addLast(new HttpObjectAggregator(1024 * 1024));
-		p.addLast(new HttpInboundHandler(httpRequestFilterChain));
-		p.addLast(new HttpOutboundHandler(httpResponseFilterChain));
+		for (ChannelHandler channelHandler : this.channelHandlers) {
+			p.addLast(channelHandler);
+		}
 	}
 }
