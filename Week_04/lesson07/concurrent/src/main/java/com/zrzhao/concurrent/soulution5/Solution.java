@@ -4,6 +4,7 @@ import com.zrzhao.concurrent.utils.FixedThreadPool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 使用 Semaphore
@@ -15,12 +16,21 @@ public class Solution {
     public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
 
+        int[] resultHolder = new int[1];
+
+        Object lockObj = new Object();
+
         ExecutorService executorService = FixedThreadPool.newThreadPoolExecutor();
 
-        // 这是得到的返回值
-        int result = sum(executorService);
-
+        executorService.execute(() -> {
+            lockObj.notifyAll();
+            resultHolder[0] = sum();
+            System.out.println("异步线程赋值完毕");
+        });
+        Thread.currentThread().wait();
         block();
+
+        int result = resultHolder[0];
 
         // 确保  拿到result 并输出
         System.out.println("异步计算结果为：" + result);
@@ -33,10 +43,8 @@ public class Solution {
     private static synchronized void block() {
         System.out.println("阻塞");
     }
-    private static synchronized int sum(ExecutorService executorService) {
-        int[] resultHolder = new int[1];
-        executorService.execute(() -> resultHolder[0] = recursion(36));
-        return resultHolder[0];
+    private static synchronized int sum() {
+        return recursion(36);
     }
 
     private static int recursion(int a) {
