@@ -1,32 +1,25 @@
-package com.zrzhao.concurrent.soulution1;
+package com.zrzhao.concurrent.solution;
 
 import com.zrzhao.concurrent.utils.FixedThreadPool;
 
-import java.util.concurrent.*;
+import java.util.concurrent.SynchronousQueue;
 
 /**
- * 判断是否 被赋值
+ * 使用 SynchronousQueue
  *
  * @author zrzhao
  */
-public class Solution {
-
-    volatile static int[] resultHolder = new int[1];
+public class Solution11 {
 
     public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
 
-        ExecutorService executorService = FixedThreadPool.newThreadPoolExecutor();
-        executorService.submit(() -> resultHolder[0] = sum());
+        SynchronousQueue<Integer> synchronousQueue = new SynchronousQueue<>();
 
-        // 等待线程池异步修改结果
-        while (resultHolder[0] == 0) {
-            Thread.yield();
-            System.out.println("堂堂主线程等着异步线程执行");
-        }
+        FixedThreadPool.newThreadPoolExecutor().execute(() -> synchronousQueue.offer(sum()));
 
         // 这是得到的返回值
-        int result = resultHolder[0];
+        int result = synchronousQueue.take();
 
         // 确保  拿到result 并输出
         System.out.println("异步计算结果为：" + result);

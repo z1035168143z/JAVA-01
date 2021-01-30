@@ -1,41 +1,38 @@
-package com.zrzhao.concurrent.soulution4;
+package com.zrzhao.concurrent.solution;
 
 import com.zrzhao.concurrent.utils.FixedThreadPool;
 
-import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 使用 Semaphore
+ * 使用 Condition
  *
  * @author zrzhao
  */
-public class Solution {
+public class Solution8 {
 
     public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
 
-        ExecutorService executorService = FixedThreadPool.newThreadPoolExecutor();
-
         final int[] resultHolder = new int[1];
 
-        Semaphore semaphore = new Semaphore(1);
+        ReentrantLock reentrantLock = new ReentrantLock();
+        Condition condition = reentrantLock.newCondition();
 
-        executorService.execute(() -> {
-            try {
-                semaphore.acquire();
+        try {
+            FixedThreadPool.newThreadPoolExecutor().execute(() -> {
+                reentrantLock.lock();
                 resultHolder[0] = sum();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } finally {
-                semaphore.release();
-            }
-        });
-
-        while (!semaphore.tryAcquire()) {
-            System.out.println("没人干主线程的活");
+                condition.signal();
+                reentrantLock.unlock();
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+        reentrantLock.lock();
+        condition.await();
 
         // 这是得到的返回值
         int result = resultHolder[0];

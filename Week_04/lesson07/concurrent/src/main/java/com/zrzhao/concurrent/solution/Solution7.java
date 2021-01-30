@@ -1,38 +1,29 @@
-package com.zrzhao.concurrent.soulution3;
+package com.zrzhao.concurrent.solution;
 
-import com.zrzhao.concurrent.utils.FixedThreadPool;
-
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.locks.LockSupport;
 
 /**
- * 使用 CyclicBarrier
+ * 使用 LockSupport.park
  *
  * @author zrzhao
  */
-public class Solution {
+public class Solution7 {
 
     public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
 
-        ExecutorService executorService = FixedThreadPool.newThreadPoolExecutor();
-
         final int[] resultHolder = new int[1];
 
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
+        Thread mainThread = Thread.currentThread();
 
-        executorService.execute(() -> {
+        Thread thread = new Thread(() -> {
             resultHolder[0] = sum();
-            try {
-                cyclicBarrier.await();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            LockSupport.unpark(mainThread);
         });
 
-        cyclicBarrier.await();
+        thread.start();
+
+        LockSupport.park();
 
         // 这是得到的返回值
         int result = resultHolder[0];
