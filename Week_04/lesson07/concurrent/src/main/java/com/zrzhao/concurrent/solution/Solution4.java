@@ -1,16 +1,16 @@
-package com.zrzhao.concurrent.soulution2;
+package com.zrzhao.concurrent.solution;
 
 import com.zrzhao.concurrent.utils.FixedThreadPool;
 
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Semaphore;
 
 /**
- * 使用 CountDownLatch
+ * 使用 Semaphore
  *
  * @author zrzhao
  */
-public class Solution {
+public class Solution4 {
 
     public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
@@ -19,14 +19,20 @@ public class Solution {
 
         final int[] resultHolder = new int[1];
 
-        CountDownLatch countDownLatch = new CountDownLatch(1);
+        Semaphore semaphore = new Semaphore(1);
 
+        semaphore.acquire();
         executorService.execute(() -> {
-            resultHolder[0] = sum();
-            countDownLatch.countDown();
+            try {
+                resultHolder[0] = sum();
+            } finally {
+                semaphore.release();
+            }
         });
 
-        countDownLatch.await();
+        while (!semaphore.tryAcquire()) {
+            System.out.println("没人干主线程的活");
+        }
 
         // 这是得到的返回值
         int result = resultHolder[0];

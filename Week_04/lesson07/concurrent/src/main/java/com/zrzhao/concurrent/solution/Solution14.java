@@ -1,36 +1,39 @@
-package com.zrzhao.concurrent.soulution5;
+package com.zrzhao.concurrent.solution;
 
 import com.zrzhao.concurrent.utils.FixedThreadPool;
 
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
 
 /**
- * 使用 Semaphore
+ * 使用 wait notify
  *
  * @author zrzhao
  */
-public class Solution {
+public class Solution14 {
 
     public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
 
-        int[] resultHolder = new int[1];
+        ExecutorService executorService = FixedThreadPool.newThreadPoolExecutor();
+
+        final int[] resultHolder = new int[1];
 
         Object lockObj = new Object();
 
-        ExecutorService executorService = FixedThreadPool.newThreadPoolExecutor();
-
         executorService.execute(() -> {
-            lockObj.notifyAll();
-            resultHolder[0] = sum();
-            System.out.println("异步线程赋值完毕");
+            synchronized (lockObj) {
+                resultHolder[0] = sum();
+                lockObj.notify();
+            }
         });
-        Thread.currentThread().wait();
-        block();
 
-        int result = resultHolder[0];
+        int result = 0;
+
+        synchronized (lockObj) {
+            lockObj.wait();
+            // 这是得到的返回值
+            result = resultHolder[0];
+        }
 
         // 确保  拿到result 并输出
         System.out.println("异步计算结果为：" + result);
@@ -40,10 +43,7 @@ public class Solution {
         // 然后退出main线程
     }
 
-    private static synchronized void block() {
-        System.out.println("阻塞");
-    }
-    private static synchronized int sum() {
+    private static int sum() {
         return recursion(36);
     }
 
