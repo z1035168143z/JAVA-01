@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<xsd:schema xmlns="http://www.zrzhao.com/schema/beans"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.zrzhao.com/schema/beans">
+
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+
+	<xsd:complexType name="studentType">
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="age" type="xsd:int"/>
+	</xsd:complexType>
+
+	<xsd:element name="student" type="studentType">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[ nothing ]]></xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	
+</xsd:schema>

@@ -1,0 +1,12 @@
+beans:
+  man:
+    beanName: man
+    beanClass: com.zrzhao.human.impl.Man
+  daySleep:
+    beanName: daySleep
+    beanClass: com.zrzhao.human.impl.DayDaySleep
+  goodEat:
+    beanName: goodEat
+    beanClass: com.zrzhao.framework.aop.pointcat.GoodEat
+    parameterTypes: [java.lang.String, java.lang.String]
+    parameters: ["张三", "18"]

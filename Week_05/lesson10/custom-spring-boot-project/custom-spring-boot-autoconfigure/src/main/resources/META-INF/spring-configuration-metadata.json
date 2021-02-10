@@ -1,0 +1,11 @@
+{
+  "properties": [
+    {
+      "name": "custom.autoconfiguration.enabled",
+      "type": "java.lang.Boolean",
+      "description": "An bean configuration trigger.",
+      "sourceType": "com.zrzhao.autoconfigure.CustomAutoConfiguration",
+      "defaultValue": false
+    }
+  ]
+}
