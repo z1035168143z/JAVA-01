@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zrzhao.mysql.batchinsert.mybatis.IOrder">
+
+    <insert id="saveOrder" parameterType="com.zrzhao.mysql.batchinsert.bo.Order">
+        insert into t_order (`order_no`, `owner_id`, `product_id`, `receipt_address_id`, `order_amount`, `status`, `order_snapshot`)
+        values
+        <foreach collection="orders" item="order" separator=",">
+            (#{order.orderNo},#{order.ownerId},#{order.productId},#{order.receiptAddressId},#{order.orderAmount},#{order.status},#{order.orderSnapshot})
+        </foreach>
+    </insert>
+
+</mapper>
