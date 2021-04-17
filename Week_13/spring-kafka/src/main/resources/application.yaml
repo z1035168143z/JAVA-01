@@ -1,0 +1,5 @@
+spring:
+  kafka:
+    bootstrap-servers: 127.0.0.1:9001,127.0.0.1:9002,127.0.0.1:9003
+    consumer:
+      group-id: kafkaGroup
