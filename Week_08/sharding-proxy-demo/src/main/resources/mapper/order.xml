@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.zrzhao.shardingproxydemo.order.mapper.IOrder">
+
+    <insert id="save" parameterType="io.zrzhao.shardingproxydemo.order.entity.Order">
+        insert into t_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            order_no,
+            owner_id,
+            product_id,
+            receipt_address_id,
+            order_amount,
+            status,
+            delete_status,
+            order_snapshot,
+        </trim>
+        <trim prefix=" values (" suffix=")" suffixOverrides=",">
+            #{orderNo},
+            #{ownerId},
+            #{productId},
+            #{receiptAddressId},
+            #{orderAmount},
+            #{status},
+            #{deleteStatus},
+            #{orderSnapshot},
+        </trim>
+
+    </insert>
+
+    <select id="findByOrderNo" resultType="io.zrzhao.shardingproxydemo.order.entity.Order">
+        select order_no as orderNo,
+               owner_id as ownerId
+        from t_order
+        where order_no = #{orderNo}
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        select count(*)
+        from t_order;
+    </select>
+
+    <update id="update" parameterType="io.zrzhao.shardingproxydemo.order.entity.Order">
+        update order_no
+            set order_pay_time = #{orderPayTime}
+        where order_no = #{orderNo}
+    </update>
+
+    <delete id="deleteByOrderNo" parameterType="java.lang.String">
+        delete from t_order where order_no = #{orderNo}
+    </delete>
+
+</mapper>
