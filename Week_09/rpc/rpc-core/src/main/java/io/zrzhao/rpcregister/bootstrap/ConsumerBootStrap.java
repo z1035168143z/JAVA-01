@@ -1,4 +1,4 @@
-package io.zrzhao.rpcregister.client;
+package io.zrzhao.rpcregister.bootstrap;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
@@ -21,7 +21,7 @@ import java.util.Scanner;
  * @date 2021/2/11
  */
 @AllArgsConstructor
-public class EchoClient {
+public class ConsumerBootStrap {
 
     private final String host;
     private final int port;

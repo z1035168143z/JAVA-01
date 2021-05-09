@@ -1,0 +1,3 @@
+rpc:
+  provider:
+    port: 22317
