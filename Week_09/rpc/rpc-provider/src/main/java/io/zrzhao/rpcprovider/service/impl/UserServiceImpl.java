@@ -1,7 +1,8 @@
-package io.zrzhao.rpcprovider.business.service.impl;
+package io.zrzhao.rpcprovider.service.impl;
 
-import io.zrzhao.rpcprovider.business.bo.User;
-import io.zrzhao.rpcprovider.business.service.UserService;
+import io.zrzhao.rpcprovider.bo.User;
+import io.zrzhao.rpcprovider.service.UserService;
+import io.zrzhao.rpcregister.annotation.Provider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
  * @author zrzhao
  * @date 2021/3/27
  */
+@Provider
 public class UserServiceImpl implements UserService {
 
     Map<Long, User> userMap = new HashMap<>();

@@ -1,7 +1,7 @@
 package io.zrzhao.rpcconsumer;
 
-import io.zrzhao.rpcprovider.business.bo.User;
-import io.zrzhao.rpcprovider.business.service.UserService;
+import io.zrzhao.rpcprovider.bo.User;
+import io.zrzhao.rpcprovider.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

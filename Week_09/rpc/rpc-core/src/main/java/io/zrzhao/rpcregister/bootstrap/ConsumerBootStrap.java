@@ -10,49 +10,62 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.CharsetUtil;
-import io.zrzhao.rpcregister.handler.EchoClientHandler;
-import lombok.AllArgsConstructor;
+import io.zrzhao.rpcregister.annotation.Consumer;
+import io.zrzhao.rpcregister.connection.ConsumerConnection;
+import io.zrzhao.rpcregister.handler.RpcConsumerInvokeHandler;
+import io.zrzhao.rpcregister.pojo.RpcContext;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.PropertyValues;
+import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.net.InetSocketAddress;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * @author zrzhao
  * @date 2021/2/11
  */
-@AllArgsConstructor
-public class ConsumerBootStrap {
+@Component
+@Slf4j
+public class ConsumerBootStrap implements InstantiationAwareBeanPostProcessor {
 
-    private final String host;
-    private final int port;
+    private final RpcContext rpcContext = RpcContext.getContext();
 
-    public void start() throws InterruptedException {
-        EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
-        try {
-            Bootstrap bootstrap = new Bootstrap();
-            bootstrap.group(eventLoopGroup)
-                    .channel(NioSocketChannel.class)
-                    .remoteAddress(new InetSocketAddress(host, port))
-                    .handler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new EchoClientHandler());
-                        }
-                    });
-            ChannelFuture future = bootstrap.connect().sync();
-            Channel channel = future.channel();
+    private final String scanPackage = this.getClass().getPackage().getName();
 
-            Scanner scanner = new Scanner(System.in);
-            while (scanner.hasNext()) {
-                String line = scanner.nextLine();
-                channel.writeAndFlush(Unpooled.copiedBuffer(line + "\r\n", CharsetUtil.UTF_8));
-            }
+    private final ConsumerConnection consumerConnection = new ConsumerConnection();
 
-            channel.closeFuture().sync();
-        } finally {
-            eventLoopGroup.shutdownGracefully().sync();
+    @Override
+    public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+        if (!bean.getClass().getPackage().getName().startsWith(scanPackage)) {
+            return null;
         }
+        Field[] declaredFields = bean.getClass().getDeclaredFields();
+        List<Field> consumerReferences = Arrays.stream(declaredFields).filter(field -> field.isAnnotationPresent(Consumer.class)).collect(Collectors.toList());
 
+        consumerReferences.forEach(consumerReference -> {
+            Object consumer = createConsumer(consumerReference.getType());
+            try {
+                consumerReference.setAccessible(true);
+                consumerReference.set(bean, consumer);
+            } catch (IllegalAccessException e) {
+                log.error(e.getMessage(), e);
+            }
+        });
+        return null;
+    }
+
+    private Object createConsumer(Class<?> clazz) {
+        return Proxy.newProxyInstance(clazz.getClassLoader(), new Class[] { clazz }, new RpcConsumerInvokeHandler(consumerConnection));
     }
 
 }

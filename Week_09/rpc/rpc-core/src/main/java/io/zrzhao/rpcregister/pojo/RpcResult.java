@@ -9,7 +9,7 @@ import lombok.Data;
  * @date 2021/3/27
  */
 @Data
-public class RpcResult<T> {
+public class RpcResult {
 
     /**
      * 请求状态
@@ -18,12 +18,14 @@ public class RpcResult<T> {
     /**
      * 请求结果
      */
-    private T result;
+    private Object result;
     /**
      * 是否有异常抛出
      */
     private Throwable throwable;
 
-
-
+    public RpcResult(int status, Object result) {
+        this.status = status;
+        this.result = result;
+    }
 }

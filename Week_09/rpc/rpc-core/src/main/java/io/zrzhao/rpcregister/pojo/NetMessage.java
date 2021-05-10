@@ -15,6 +15,7 @@ public class NetMessage {
      * 请求封装到哪个实体
      */
     private String className;
+
     /**
      * 具体的内容
      */

@@ -1,4 +1,4 @@
-package io.zrzhao.rpcprovider.business.bo;
+package io.zrzhao.rpcprovider.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

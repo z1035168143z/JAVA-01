@@ -11,8 +11,18 @@ import org.springframework.util.MultiValueMap;
 @Getter
 public class RpcContext {
 
+    private RpcContext() {
+
+    }
+
+    private static final RpcContext INSTANCE = new RpcContext();
+
+    public static RpcContext getContext() {
+        return INSTANCE;
+    }
+
     /**
-     *  class : [method,method,method]
+     * class : [method,method,method]
      */
     private final MultiValueMap<String, ProviderMethod> providerMethodStore = new LinkedMultiValueMap<>();
 

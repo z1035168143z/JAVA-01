@@ -1,6 +1,6 @@
-package io.zrzhao.rpcprovider.business.service;
+package io.zrzhao.rpcprovider.service;
 
-import io.zrzhao.rpcprovider.business.bo.User;
+import io.zrzhao.rpcprovider.bo.User;
 
 /**
  * @author zrzhao

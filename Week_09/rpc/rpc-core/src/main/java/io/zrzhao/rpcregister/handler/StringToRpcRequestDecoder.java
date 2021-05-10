@@ -22,5 +22,4 @@ public class StringToRpcRequestDecoder extends MessageToMessageDecoder<String> {
         out.add(JSONObject.parseObject(netMessage.getContent(), aClass));
     }
 
-
 }

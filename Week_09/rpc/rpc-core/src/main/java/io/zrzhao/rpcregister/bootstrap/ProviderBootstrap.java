@@ -2,12 +2,16 @@ package io.zrzhao.rpcregister.bootstrap;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.zrzhao.rpcregister.annotation.Provider;
-import io.zrzhao.rpcregister.handler.ProviderRegisterHandler;
+import io.zrzhao.rpcregister.handler.ByteToStringDecoder;
+import io.zrzhao.rpcregister.handler.MethodInvokeHandler;
+import io.zrzhao.rpcregister.handler.RpcResultToByteEncoder;
+import io.zrzhao.rpcregister.handler.StringToRpcRequestDecoder;
 import io.zrzhao.rpcregister.pojo.ProviderMethod;
 import io.zrzhao.rpcregister.pojo.RpcContext;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +34,7 @@ import java.lang.reflect.Method;
 @Component
 public class ProviderBootstrap {
 
-    private final RpcContext rpcContext = new RpcContext();
+    private final RpcContext rpcContext = RpcContext.getContext();
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -58,7 +62,7 @@ public class ProviderBootstrap {
             }
             // 获取 bean 所实现的所有接口
             Class<?>[] interfaces = bean.getClass().getInterfaces();
-            if (interfaces == null || interfaces.length == 0) {
+            if (interfaces.length == 0) {
                 continue;
             }
 
@@ -73,10 +77,11 @@ public class ProviderBootstrap {
     }
 
     private void startProviderServer() {
-        ProviderRegisterHandler registerHandler = new ProviderRegisterHandler();
+        final ByteToStringDecoder byteToStringDecoder = new ByteToStringDecoder();
+        final StringToRpcRequestDecoder stringToRpcRequestDecoder = new StringToRpcRequestDecoder();
+        final RpcResultToByteEncoder rpcResultToByteEncoder = new RpcResultToByteEncoder();
 
-        EventLoopGroup eventLoopGroup = new NioEventLoopGroup(2);
-
+        final EventLoopGroup eventLoopGroup = new NioEventLoopGroup(2);
 
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         serverBootstrap.group(eventLoopGroup)
@@ -84,7 +89,13 @@ public class ProviderBootstrap {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel c) throws Exception {
-                        c.pipeline().addLast(registerHandler);
+                        ChannelPipeline pipeline = c.pipeline();
+                        // in
+                        pipeline.addLast(byteToStringDecoder);
+                        pipeline.addLast(stringToRpcRequestDecoder);
+                        pipeline.addLast(new MethodInvokeHandler(rpcContext));
+                        // out
+                        pipeline.addLast(rpcResultToByteEncoder);
                     }
                 });
         try {
