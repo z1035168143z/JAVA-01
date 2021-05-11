@@ -6,7 +6,6 @@
         <groupId>io.zrzhao</groupId>
         <artifactId>rpc</artifactId>
         <version>${revision}</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>rpc-consumer</artifactId>
@@ -18,9 +17,8 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>io.zrzhao</groupId>
-            <artifactId>rpc-provider</artifactId>
-            <version>${revision}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -29,14 +27,5 @@
             <version>${revision}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
