@@ -7,7 +7,7 @@
 Java Virtual Machine，将程序员编写的代码编译为字节码文件，封装兼容了各个平台，做到一次编译到处运行。并将复杂的内存管理，线程管理的细节进行封装。
 1. 类加载器：将符合JVM规范的文件加载、链接（验证、准备、解析）、初始化
 2. JVM内存模型：堆 栈 非堆 堆外 JVM自身
-3. GC 垃圾回收算法：Serial/Parallel/ParNew/CMS/G1/ZGC
+3. GC 垃圾回收算法：Serial/ParNew/CMS/G1/ZGC
 4. jvm调优：jvm提供了一系列参数，在压测前提下设置系统最适合的值。
 5. jvm运行分析：jmap/jstack/jconsole/jps/jinfo/jmc
 ```
